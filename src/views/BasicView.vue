@@ -128,11 +128,37 @@
 
   <div>
     <input type="text" v-model="pwdValue1" @input="changePwd1" placeholder="비번을 입력하세요"><br>
-    <input type="text" v-model="pwdValue2" @input="changePwd2" placeholder="비번확인을 입력하세요"><br>
+    <input type="text" v-model="pwdValue2" @input="changePwd1" placeholder="비번확인을 입력하세요"><br>
     <p v-if="errPwd" >{{errPwd}}</p>
   </div>
+  <!-- 메소드 computed -->
+  <div>
+    <p>{{hello()}}</p>
+    <p>{{hello()}}</p>
+    <p>{{hello()}}</p>
+
+    <p>{{ hello2 }}</p>
+    <p>{{ hello2 }}</p>
+    <p>{{ hello2 }}</p>
+  </div>
   
-  
+  <div>
+    성: <input type="text" v-model="lastName" @input="changeLastName"><br>
+    이름: <input type="text" v-model="firstName" @input="changeFirstName"><br>
+    <p>method:  {{ methodFullName() }}</p>
+    <p>method:  {{ methodFullName() }}</p>
+    <p>computed: {{ computeFullName }}</p>
+    <p>computed: {{ computeFullName }}</p>
+    <p>fullName: {{fullName}}</p>
+    <p>fullName: {{fullName}}</p>
+  </div>
+
+  <!-- watch -->
+  <div>
+    <h4>user_info : {{userInfo}}</h4>
+    <input type="text" v-model="userName" >
+    <input type="text" v-model="userAge" >
+  </div>
   <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
   끝
 
@@ -182,9 +208,33 @@ export default {
       errEmail:'',
       pwdValue1:'',
       pwdValue2:'',
-      errPwd:'비번을 입력하세요',
+      errPwd:'',
+      lastName:'',
+      firstName:'',
+      fullName:'',
+      userName:'홍길동',
+      userAge:'30',
+      userInfo:'',
 
     };
+  },
+  watch:{
+    userName(){
+      this.userInfo = this.userName+'('+this.userAge+')';
+    },
+    // userAge(){
+    //   this.userInfo = this.userName+'('+this.userAge+')';
+    // },
+  },
+  computed: {
+    hello2() {
+      console.log('hello2 호출');
+      return '안녕하세요, 반가워요';
+    },
+    computeFullName() {
+      console.log('computeFullName 호출');
+      return this.lastName + this.firstName;
+    }
   },
   setup() {
     
@@ -233,24 +283,33 @@ export default {
         this.errPwd='비번을 입력하세요';
       } else if(this.pwdValue2===''){
         this.errPwd='비번확인을 입력하세요';
+      } else if(this.pwdValue1.length < 8 || this.pwdValue2.length < 8 ){
+        this.errPwd = '비밀번호는 최소 8자리수 이상입니다.';
       } else if(this.pwdValue1===this.pwdValue2){
-        this.errPwd='';
+        this.errPwd = '비밀번호가 유효합니다.';
       } else {
-        this.errPwd='비번이 일치하지 않습니다.';
+        this.errPwd = '비번이 일치하지 않습니다.';
       }
 
     },
-    changePwd2(){
-      if(this.pwdValue1===''){
-        this.errPwd='비번을 입력하세요';
-      } else if(this.pwdValue2===''){
-        this.errPwd='비번확인을 입력하세요';
-      } else if(this.pwdValue1===this.pwdValue2){
-        this.errPwd='';
-      } else {
-        this.errPwd='비번이 일치하지 않습니다.';
-      }
-
+    hello(){
+      console.log('hello()호출');
+      return '안녕하세요, 반갑습니다.';
+    },
+    changeLastName() {
+      // lastName 변경 시 fullName 업데이트
+      console.log('changeLastName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    changeFirstName() {
+      // firstName 변경 시 fullName 업데이트
+      console.log('changeFirstName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    methodFullName() {
+      // 메소드로 fullName 계산
+      console.log('methodFullName 호출');
+      return this.lastName + this.firstName;
     },
 
   }
