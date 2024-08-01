@@ -1,16 +1,19 @@
 <template>
+  <br><br><br><br><br><br>
   <div class="">
-    <!-- 속성연결 -->
-    <img src='https://borgssam.github.io/MySite/img/album_01.jpg'
-     title="가방든 사나이"><br/>
-    <img v-bind:src="imgSrc" alt="" v-bind:title="imgTitle"><br/>
-
-    <div>
-        <button :disabled="btn_01" :style="color_blue">버튼</button>
-        <button :disabled="btn_02" :style="color_red">버튼</button>
-    </div>
-
-    
+    <label > 성 : <input type="text" v-model="familyName1" @input="makeFullName1"></label>
+    <label > 이름: <input type="text" v-model="name1" @input="makeFullName1"> </label>
+    <p>성명(method) : {{ fullName1 }}</p>
+  </div><br><br>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName2"></label>
+    <label > 이름: <input type="text" v-model="name2"> </label>
+    <p>성명(computed) : {{ makeFullName2 }}</p>
+  </div><br><br>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName3"></label>
+    <label > 이름: <input type="text" v-model="name3"> </label>
+    <p>성명(watch) : {{ fullName3 }}</p>
   </div>
 </template>
 
@@ -19,16 +22,33 @@ export default {
   name: 'TestView',
   data() {
     return {
-        imgSrc:'https://borgssam.github.io/MySite/img/album_01.jpg',
-        imgTitle:'가방든 사나이',
-        btn_01:true,
-        btn_02:false,
-        color_blue: {color:'blue', fontSize:'32px'},
-        color_red: {color:'red',fontSize:'32px'},
-      
+        familyName1:'',
+        name1:'',
+        fullName1:'',  
+        familyName2:'',
+        name2:'',   
+        familyName3:'',
+        name3:'',
+        fullName3:'',  
     };
   },
+  watch:{
+    familyName3(){
+        this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    },
+    name3(){
+        this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    }
+  },
+  computed:{
+    makeFullName2(){
+        return this.familyName2+ ' - ' + this.name2;
+    }
+  },
   methods: {
+    makeFullName1(){
+        this.fullName1 = this.familyName1+ ' - ' + this.name1;
+    }
     
   }
 };
