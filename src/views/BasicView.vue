@@ -159,6 +159,22 @@
     <input type="text" v-model="userName" >
     <input type="text" v-model="userAge" >
   </div>
+  <br><hr>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName1" @input="makeFullName1"></label>
+    <label > 이름: <input type="text" v-model="name1" @input="makeFullName1"> </label>
+    <p>성명(method) : {{ fullName1 }}</p>
+  </div><br><br>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName2"></label>
+    <label > 이름: <input type="text" v-model="name2"> </label>
+    <p>성명(computed) : {{ makeFullName2 }}</p>
+  </div><br><br>
+  <div class="">
+    <label > 성 : <input type="text" v-model="familyName3"></label>
+    <label > 이름: <input type="text" v-model="name3"> </label>
+    <p>성명(watch) : {{ fullName3 }}</p>
+  </div>
   <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
   끝
 
@@ -222,9 +238,12 @@ export default {
     userName(){
       this.userInfo = this.userName+'('+this.userAge+')';
     },
-    // userAge(){
-    //   this.userInfo = this.userName+'('+this.userAge+')';
-    // },
+    familyName3(){
+        this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    },
+    name3(){
+        this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    }
   },
   computed: {
     hello2() {
@@ -234,6 +253,9 @@ export default {
     computeFullName() {
       console.log('computeFullName 호출');
       return this.lastName + this.firstName;
+    },
+    makeFullName2(){
+        return this.familyName2+ ' - ' + this.name2;
     }
   },
   setup() {
@@ -310,7 +332,11 @@ export default {
       // 메소드로 fullName 계산
       console.log('methodFullName 호출');
       return this.lastName + this.firstName;
+    },    
+    makeFullName1(){
+        this.fullName1 = this.familyName1+ ' - ' + this.name1;
     },
+    
 
   }
 };

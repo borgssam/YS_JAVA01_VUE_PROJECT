@@ -3,7 +3,8 @@
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/test">테스트</router-link>
-    <router-link to="/basic">3.콤포넌트(기본)</router-link>
+    <router-link to="/basic">5.콤포넌트(기본)</router-link>
+    <router-link to="/deep">8.콤포넌트(심화)</router-link>
   </nav>
   <router-view/>
 </template>
