@@ -2,6 +2,8 @@
   <div class="gson">
     <!-- 내용을 추가하세요 -->
     <p v-bind:style="{color:tcolor}" >큰집손자 2 : {{message}}</p>
+    <input type="text" v-model="gsonMsg">
+    <input type="button" value="손자12" @click="clickGson22">
   </div>
 </template>
 
@@ -38,6 +40,7 @@ export default {
       message:'',
       index:2,
       tcolor:'red',
+      gsonMsg:'',
     };
   },
   watch: {
@@ -62,7 +65,11 @@ export default {
         this.tcolor=data;
       }
       // alert('cuteson12=>'+idx+','+data);
+    },
+    clickGson22(){
+      this.$emit('event_report', this.gsonMsg);
     }
+
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
