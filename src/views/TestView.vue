@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <br><br><br><br><br><br><br>
+    <br><br><br><br><br>
     <GoodSon10 ref="son10"/>
     <GoodSon20 ref="son20"/>
     <input type="button" value="할아버지버튼1" @click="clickGpapa">

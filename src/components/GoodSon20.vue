@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 .son{
-  background-color: moccasin;
+  background-color: rgb(128, 117, 100);
   padding:20px;
   margin: 20px;
 }

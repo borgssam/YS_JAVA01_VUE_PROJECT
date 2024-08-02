@@ -56,13 +56,12 @@ export default {
     clickMsg(data) {
       this.message=data;
     },
-    changeTextColor(idx,data){
-      
-      alert('cuteson12=>'+idx+','+data);
+    changeTextColor(idx,data){      
+      // alert('cuteson12=>'+idx+','+data);
       if(this.index == idx) {
         this.tcolor=data;
       }
-      alert('cuteson12=>'+idx+','+data);
+      // alert('cuteson12=>'+idx+','+data);
     }
   },
   setup() {
@@ -82,7 +81,7 @@ export default {
 
 <style scoped>
 .son{
-  background-color: moccasin;
+  background-color: rgb(128, 117, 100);
 }
 .gson{
   background-color: yellow;
