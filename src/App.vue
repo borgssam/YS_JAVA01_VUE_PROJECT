@@ -12,6 +12,7 @@
     <router-link to="calculator2">9.계산기2</router-link>
     <router-link to="calculator3">9.계산기3</router-link>
     <router-link to="calculator4">9.계산기4</router-link>
+    <router-link to="mixin">9.Mixin</router-link>
   </nav>
   <router-view/>
 </template>
