@@ -11,7 +11,7 @@
 import {reactive, computed, toRefs} from 'vue';
 
 function plusNumbers(){
-  //반응형 상태객체: 속성병경될때마낟 자동으로 DOM업데이트
+  //반응형 상태객체: 속성이 변경될때마다 자동으로 DOM업데이트
   let state = reactive({
     num1:0, //첫번째 텍스트박스와 바인딩될 숫자 상태
     num2:0, //두번째 텍스트박스와 바인딩될 숫자 상태
