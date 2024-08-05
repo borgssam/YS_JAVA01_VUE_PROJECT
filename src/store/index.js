@@ -7,7 +7,8 @@ const store = createStore(
     //상태초기화 (vue:data유사)
     state(){
       return {
-        user:{}
+        user:{},
+        members:[],
       };
     },
     getters:{
@@ -18,7 +19,17 @@ const store = createStore(
       //함수 값을 넣는 함수
       setUser(state, data){
         state.user = data;
+      },
+      setMemberList(state, members){
+        state.members = members;
+      },
+      addmember(state, member){
+        state.members.push(member);
+      },
+      removeMember(state, memberIndex){
+        state.members.splice(memberIndex,1);
       }
+
     },
     actions:{
 
