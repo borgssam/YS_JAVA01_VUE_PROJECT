@@ -23,7 +23,7 @@ const store = createStore(
       setMemberList(state, members){
         state.members = members;
       },
-      addmember(state, member){
+      addMember(state, member){
         state.members.push(member);
       },
       removeMember(state, memberIndex){
